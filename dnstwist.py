@@ -256,7 +256,7 @@ class DomainFuzz():
 					return domain[0], domain[1] + '.' + domain[2]
 
 		return domain[0] + '.' + domain[1], domain[2]
-Th
+
 	def __validate_domain(self, domain):
 		if len(domain) > 255:
 			return False
