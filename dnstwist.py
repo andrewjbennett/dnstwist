@@ -256,7 +256,7 @@ class DomainFuzz():
 					return domain[0], domain[1] + '.' + domain[2]
 
 		return domain[0] + '.' + domain[1], domain[2]
-
+Th
 	def __validate_domain(self, domain):
 		if len(domain) > 255:
 			return False
@@ -545,7 +545,10 @@ class DomainThread(threading.Thread):
 
 	def run(self):
 		while not self.kill_received:
-			domain = self.jobs.get()
+			try:
+				domain = self.jobs.get(False)
+			except Exception:
+				break
 
 			if self.option_extdns:
 				resolv = dns.resolver.Resolver()
